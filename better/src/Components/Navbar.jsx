@@ -43,7 +43,7 @@ const Navbar = () => {
             <img
               src={isSticking ? logoBlack : logoWhite}
               alt="LOGO"
-              className="h-10"
+              className="h-8"
             />
           </span>
 
