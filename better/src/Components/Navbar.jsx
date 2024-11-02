@@ -17,12 +17,14 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex items-center justify-between py-4 px-6 bg-green-900 text-white">
+    <nav className="flex items-center py-4 px-4 bg-green-900 text-white">
       {/* Logo */}
-      <img src={logo} alt="Better" className="h-8 mr-6" />
+      <div className="flex-shrink-0">
+        <img src={logo} alt="Better" className="h-8" />
+      </div>
 
-      {/* Menu Items */}
-      <div className="flex items-center space-x-8">
+      {/* Menu Items and Continue Button Container */}
+      <div className="flex items-center space-x-4 ml-4">
         {menuItems.map((item, index) => (
           <div key={index} className="relative">
             {/* Button to toggle dropdown on click */}
@@ -35,7 +37,7 @@ const Navbar = () => {
 
             {/* Dropdown menu */}
             {activeDropdown === index && (
-              <div className="absolute top-full mt-2 bg-white text-red-600 rounded shadow-lg">
+              <div className="absolute top-full mt-2 bg-white text-black rounded shadow-lg">
                 {item.dropdownItems.map((subItem, subIndex) => (
                   <a
                     key={subIndex}
@@ -53,7 +55,7 @@ const Navbar = () => {
         {/* Continue Button */}
         <a
           href="/continue"
-          className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
+          className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full"
         >
           Continue
         </a>
