@@ -6,6 +6,8 @@ const App = () => (
   <div>
     <Navbar />
     <HeroSection />
+    <HeroSection />
+    <HeroSection />
     {/* Other sections can follow here */}
   </div>
 );
