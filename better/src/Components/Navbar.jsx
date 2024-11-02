@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import logoWhite from '/headerlogo.png'; // Initial white logo
 import logoBlack from '/betterblack.png'; // Scrolled black logo
+import PhoneIcon from '@mui/icons-material/Phone';
 
 const Navbar = () => {
   const [isSticking, setIsSticking] = useState(false);
@@ -35,19 +36,19 @@ const Navbar = () => {
         isSticking ? 'sticking bg-white' : 'bg-green-primary'
       } transition-all duration-500 sticky top-0 z-50`}
     >
-      <div className="wrapper mx-auto px-4 py-3 flex justify-between items-center">
-        <div className="flex items-center space-x-8">
+      <div className="wrapper mx-auto px-12 py-5 flex justify-between items-center">
+        <div className="flex items-center space-x-16">
           {/* Conditionally render logo based on scroll state */}
           <span className="logo">
             <img
               src={isSticking ? logoBlack : logoWhite}
               alt="LOGO"
-              className="h-8"
+              className="h-10"
             />
           </span>
 
           {/* Menu Items */}
-          <ul className="nav-list flex space-x-8">
+          <ul className="nav-list flex space-x-16 ">
             {menuItems.map((item, index) => (
               <li key={index} className="relative">
                 <button
@@ -78,13 +79,25 @@ const Navbar = () => {
           </ul>
         </div>
 
-        {/* Continue Button */}
-        <a
-          href="/continue"
-          className="px-6 py-3 rounded-full transition-colors bg-green-secondary text-black"
-        >
-          Continue
-        </a>
+        {/* Phone Icon and Continue Button */}
+        <div className="flex items-center space-x-8">
+          {/* Phone Icon with Conditional Styles */}
+          <div
+            className={`p-2 rounded-full border transition-all duration-300 ${
+              isSticking ? 'text-black border-gray-800' : 'text-white border-white'
+            }`}
+          >
+            <PhoneIcon fontSize="small" />
+          </div>
+
+          {/* Continue Button */}
+          <a
+            href="/continue"
+            className="px-6 py-2.5 rounded-full transition-colors bg-green-secondary text-black"
+          >
+            Continue
+          </a>
+        </div>
       </div>
     </header>
   );
