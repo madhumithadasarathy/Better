@@ -19,11 +19,60 @@ const Navbar = () => {
   }, []);
 
   const menuItems = [
-    { title: "Buy", dropdownItems: ["Page1", "Page2", "Page3"] },
-    { title: "Refinance", dropdownItems: ["Page1", "Page2"] },
-    { title: "HELOC", dropdownItems: ["Page1"] },
-    { title: "Rates", dropdownItems: ["Page1", "Page2"] },
-    { title: "Better+", dropdownItems: ["Page1", "Page2", "Page3"] },
+    {
+      title: "Buy",
+      dropdownItems: [
+        "Apply now",
+        "Purchase rates",
+        "Affordability calculator",
+        "Mortgage calculator",
+        "Rent vs buy calculator",
+        "Find an agent",
+        "VA loans",
+        "Learning center",
+      ],
+    },
+    {
+      title: "Refinance",
+      dropdownItems: [
+        "Apply Now",
+        "Refinance rates",
+        "Cash-out refinance calculator",
+        "Learning Center",
+      ],
+    },
+    {
+      title: "HELOC",
+      dropdownItems: [
+        "Apply Now",
+        "Calculate your Cash 💵",
+        "HELOC vs. Cash-out Refinance",
+        "Learning Center",
+      ],
+    },
+    {
+      title: "Rates",
+      dropdownItems: [
+        "Purchase mortgage rates",
+        "Refinance rates",
+        "Refinance cash-out rates",
+        "HELOC rates",
+        "Purchase VA rates",
+      ],
+    },
+    {
+      title: "Better+",
+      dropdownItems: [
+        "Get Insurance",
+        "Title and Closing",
+        "Better Attorney Match",
+        "Learning Center",
+        "Better Agent Match",
+        "For Agents",
+        "Better Duo",
+        "For Agents",
+      ],
+    },
   ];
 
   const toggleDropdown = (index) => {
@@ -48,21 +97,21 @@ const Navbar = () => {
           </span>
 
           {/* Menu Items */}
-          <ul className="nav-list flex space-x-16 ">
+          <ul className="nav-list flex space-x-16">
             {menuItems.map((item, index) => (
               <li key={index} className="relative">
                 <button
                   onClick={() => toggleDropdown(index)}
-                  className={`transition-colors duration-300 ${
+                  className={`transition-colors duration-300 text-md hover:bg-white ${
                     isSticking ? 'text-black' : 'text-white'
                   }`}
                 >
                   {item.title}
                 </button>
 
-                {/* Dropdown Menu */}
+                {/* Dropdown Menu with Increased Width */}
                 {activeDropdown === index && (
-                  <div className="absolute top-full mt-2 bg-white text-black rounded shadow-lg">
+                  <div className="absolute top-full mt-2 bg-white text-black rounded shadow-lg min-w-[250px]">
                     {item.dropdownItems.map((subItem, subIndex) => (
                       <a
                         key={subIndex}
@@ -84,16 +133,20 @@ const Navbar = () => {
           {/* Phone Icon with Conditional Styles */}
           <div
             className={`p-2 rounded-full border transition-all duration-300 ${
-              isSticking ? 'text-black border-gray-800' : 'text-white border-white'
-            }`}
+              isSticking ? 'text-black border-gray-500' : 'text-white border-white'
+            } hover:bg-gray-100`}
           >
             <PhoneIcon fontSize="small" />
           </div>
 
-          {/* Continue Button */}
+          {/* Continue Button with Conditional Hover Effects */}
           <a
             href="/continue"
-            className="px-6 py-2.5 rounded-full transition-colors bg-green-secondary text-black"
+            className={`px-6 py-2.5 rounded-full transition-colors ${
+              isSticking
+                ? 'bg-green-700 text-white hover:bg-green-primary hover:text-white'
+                : 'bg-green-secondary text-black hover:bg-transparent hover:text-white'
+            }`}
           >
             Continue
           </a>
