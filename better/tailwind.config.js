@@ -10,8 +10,8 @@ module.exports = {
         sans: ['Poppins', 'sans-serif'],
       },
       colors: {
-        'green-primary': '#063125',
-        'green-secondary': '#017849',
+        'green-primary': '#004733',
+        'green-secondary': '#1EE07F',
       },
     },
   },
