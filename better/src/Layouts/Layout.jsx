@@ -1,13 +1,13 @@
-import Navbar from "../Components/Navbar";
+import React from 'react';
+import Navbar from '../Components/Navbar';
+import HeroSection from '../Components/HeroSection';
 
+const App = () => (
+  <div>
+    <Navbar />
+    <HeroSection />
+    {/* Other sections can follow here */}
+  </div>
+);
 
-const Layout = ({ children }) => {
-  return (
-    <div>
-      <Navbar />
-      <main>{children}</main>
-    </div>
-  );
-};
-
-export default Layout;
+export default App;

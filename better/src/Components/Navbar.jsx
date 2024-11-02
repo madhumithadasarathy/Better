@@ -1,9 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from '/headerlogo.png';
 import PhoneIcon from '@mui/icons-material/Phone';
 
 const Navbar = () => {
-  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null); // Define activeDropdown
+
+  // Toggle text color based on scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > window.innerHeight - 100); // Change when leaving the hero section
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const menuItems = [
     { title: "Buy", dropdownItems: ["Page1", "Page2", "Page3"] },
@@ -18,19 +32,23 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex items-center justify-between py-6 px-10 bg-green-primary text-white">
+    <nav
+      className={`flex items-center justify-between py-6 px-10 sticky top-0 z-50 transition-colors duration-300 ${
+        isScrolled ? 'bg-white text-black' : 'bg-transparent text-white'
+      }`}
+    >
       {/* Logo and Menu Items */}
       <div className="flex items-center space-x-10">
         <div className="flex-shrink-0">
           <img src={logo} alt="Better" className="h-8" />
         </div>
-        
+
         {/* Menu Items */}
         <div className="flex items-center space-x-10">
           {menuItems.map((item, index) => (
             <div key={index} className="relative">
               {/* Button to toggle dropdown on click */}
-              <button 
+              <button
                 onClick={() => toggleDropdown(index)}
                 className="hover:text-green-300"
               >
@@ -59,14 +77,20 @@ const Navbar = () => {
       {/* Phone Icon and Continue Button */}
       <div className="flex items-center space-x-4">
         {/* Phone Icon with Border */}
-        <div className="p-2 rounded-full border border-white flex items-center justify-center">
-          <PhoneIcon fontSize="small" className="text-white" />
+        <div
+          className={`p-2 rounded-full border ${
+            isScrolled ? 'border-black text-black' : 'border-white text-white'
+          }`}
+        >
+          <PhoneIcon fontSize="small" />
         </div>
 
         {/* Continue Button */}
         <a
           href="/continue"
-          className="bg-green-secondary hover:bg-green-600 text-white px-6 py-3 rounded-full"
+          className={`px-6 py-3 rounded-full transition-colors ${
+            isScrolled ? 'bg-green-primary text-white' : 'bg-green-secondary text-white'
+          }`}
         >
           Continue
         </a>
