@@ -35,7 +35,7 @@ const Navbar = () => {
 
             {/* Dropdown menu */}
             {activeDropdown === index && (
-              <div className="absolute top-full mt-2 bg-white text-black rounded shadow-lg">
+              <div className="absolute top-full mt-2 bg-white text-red-600 rounded shadow-lg">
                 {item.dropdownItems.map((subItem, subIndex) => (
                   <a
                     key={subIndex}
