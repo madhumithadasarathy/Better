@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import logo from '/headerlogo.png';
+import PhoneIcon from '@mui/icons-material/Phone';
 
 const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -17,15 +18,15 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex items-center justify-between py-4 px-8 bg-green-primary text-white">
+    <nav className="flex items-center justify-between py-6 px-10 bg-green-primary text-white">
       {/* Logo and Menu Items */}
-      <div className="flex items-center space-x-8">
+      <div className="flex items-center space-x-10">
         <div className="flex-shrink-0">
           <img src={logo} alt="Better" className="h-8" />
         </div>
         
         {/* Menu Items */}
-        <div className="flex items-center space-x-8">
+        <div className="flex items-center space-x-10">
           {menuItems.map((item, index) => (
             <div key={index} className="relative">
               {/* Button to toggle dropdown on click */}
@@ -55,13 +56,21 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Continue Button */}
-      <a
-        href="/continue"
-        className="bg-green-secondary hover:bg-green-600 text-black px-4 py-2 rounded-full"
-      >
-        Continue
-      </a>
+      {/* Phone Icon and Continue Button */}
+      <div className="flex items-center space-x-4">
+        {/* Phone Icon with Border */}
+        <div className="p-2 rounded-full border border-white flex items-center justify-center">
+          <PhoneIcon fontSize="small" className="text-white" />
+        </div>
+
+        {/* Continue Button */}
+        <a
+          href="/continue"
+          className="bg-green-secondary hover:bg-green-600 text-white px-6 py-3 rounded-full"
+        >
+          Continue
+        </a>
+      </div>
     </nav>
   );
 };
